@@ -8,7 +8,7 @@ import { AiFillProject } from "react-icons/ai";
 
 import { IoMail } from "react-icons/io5";
 import { HiCode } from "react-icons/hi";
-import Zoom from "react-reveal/Zoom";
+// import Zoom from "react-reveal/Zoom";
 const navItems = [
   {
     icon: <FaHome color="#ff6b6b" />,
@@ -56,11 +56,11 @@ const Menus = ({ toggle }) => {
     
     <aside className={`sidebar ${!toggle ? "collapsed" : ""}`}>
       <div className="profile-section">
-        <Zoom>
+       
         <div className="avatar-wrap">
           <img src="/IMG_9230.JPG" alt="Leher Joshi" />
         </div>
-</Zoom>
+
         {toggle && (
           <div className="profile-info">
             <h3>Leher Joshi</h3>
