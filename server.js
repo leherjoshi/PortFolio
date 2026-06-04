@@ -10,7 +10,11 @@ const app=express()
 
 //midlewares
 app.use(cors({
-  origin:"http://localhost:3000",
+  origin:[
+    "http://localhost:3000",
+    "https://portfolio-backend-zer6.onrender.com/"
+],
+
   methods:["GET","POST"],
   credentials:true,
 }));
