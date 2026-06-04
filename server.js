@@ -9,12 +9,20 @@ const app = express();
 const defaultAllowedOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
-  "https://resume-sandy-alpha.vercel.app"
+  "https://resume-sandy-alpha.vercel.app",
+  "*"
 ];
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(',').map(s => s.trim())
-  : defaultAllowedOrigins;
+const envAllowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',').map(s => s.trim()).filter(Boolean)
+  : [];
+
+const allowedOrigins = Array.from(new Set([
+  ...defaultAllowedOrigins,
+  ...envAllowedOrigins,
+]));
+
+console.log('Allowed CORS origins:', allowedOrigins);
 
 app.use(cors({
   origin: function (origin, callback) {
