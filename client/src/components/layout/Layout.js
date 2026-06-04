@@ -12,7 +12,7 @@ import WorkExperience from "../../pages/Work_Experience/WorkExperirence";
 import Education from "../../pages/Education/Education";
 import Contact from "../../pages/Contact/Contact";
 import BackToTop from "../BackToTop/BackToTop";
-import ThemeToggle from "../ThemeToggle/ThemeToggle";
+// import ThemeToggle from "../ThemeToggle/ThemeToggle";
 const Layout = () => {
   const [toggle, setToggle] = useState(true);
 
