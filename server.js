@@ -12,7 +12,7 @@ const app=express()
 app.use(cors({
   origin:[
     "http://localhost:3000",
-    "https://portfolio-backend-zer6.onrender.com/"
+    "https://resume-sandy-alpha.vercel.app/"
 ],
 
   methods:["GET","POST"],
