@@ -6,24 +6,31 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [
+const defaultAllowedOrigins = [
   "http://localhost:3000",
+  "http://127.0.0.1:3000",
   "https://resume-sandy-alpha.vercel.app"
 ];
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',').map(s => s.trim())
+  : defaultAllowedOrigins;
+
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    console.log('CORS origin:', origin);
+    if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error("Not allowed by CORS: " + origin));
     }
   },
   methods: ["GET", "POST", "OPTIONS"],
   credentials: true,
 }));
 
-app.options("*", cors());
+// note: explicit app.options("*", cors()) caused a path parsing crash on some setups;
+// preflight is handled by the cors middleware above.
 
 app.use(express.json());
 
