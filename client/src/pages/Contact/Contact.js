@@ -53,7 +53,7 @@ const Contact = () => {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:8080/api/v1/portfolio/send-email",
+        "https://portfolio-backend-zer6.onrender.com/api/v1/portfolio/send-email",
         {
           method: "POST",
           headers: {
